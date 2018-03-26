@@ -1,14 +1,18 @@
 const redisClient = require('./redisClient');
-const { fetchBundle } = require('./fetch');
+const { fetch, fetchBundle } = require('./fetch');
 
 const cache = (response, endpoint) => {
   redisClient.get(endpoint, (err, data) => {
-    if (data !== null) {
-      response.statusCode = 200;
+    if (data !== null && endpoint.includes('bundle')) {
       response.writeHead(200, { 'Content-Type': 'text/javascript' });
       response.end(JSON.parse(data));
-    } else {
+    } else if (data !== null) {
+      response.statusCode = 200;
+      response.end(data);
+    } else if (endpoint.includes('bundle')) {
       fetchBundle(response, endpoint);
+    } else {
+      fetch(response, endpoint);
     }
   });
 };
