@@ -14,3 +14,8 @@ about-styles.css
 reviews-reviews.css
 
 menu-server.js
+
+newrelic.js
+newrelic_agent.log
+
+results.bin
