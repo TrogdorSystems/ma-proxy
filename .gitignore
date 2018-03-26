@@ -16,3 +16,6 @@ reviews-reviews.css
 menu-server.js
 
 newrelic.js
+newrelic_agent.log
+
+results.bin
