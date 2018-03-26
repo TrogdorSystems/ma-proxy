@@ -1,3 +1,5 @@
+require('newrelic');
+const serviceList = require('./getServerBundles');
 const redisClient = require('./redisClient');
 const app = require('./app');
 
