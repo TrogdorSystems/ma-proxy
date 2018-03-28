@@ -1,7 +1,5 @@
 config:
   target: 'http://localhost:3009'
-  # http:
-  #   pool: 20
   phases:
     - duration: 180
       arrivalRate: 10
