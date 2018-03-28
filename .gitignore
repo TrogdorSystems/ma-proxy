@@ -19,3 +19,5 @@ newrelic.js
 newrelic_agent.log
 
 results.bin
+
+dump.rdb
