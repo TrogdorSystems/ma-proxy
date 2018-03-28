@@ -6,7 +6,7 @@ const fetch = (response, endPoint) => axios
   .then(({ data }) => {
     const stringData = JSON.stringify(data);
     redisClient.setex(endPoint, 5, stringData);
-    response.statusCode = 200;
+    response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(stringData);
   })
   .catch(() => {
@@ -15,7 +15,7 @@ const fetch = (response, endPoint) => axios
   });
 
 const fetchBundle = (response, endPoint) =>
-  axios.get(`http://localhost:3005${endPoint}`)
+  axios.get(`http://ec2-54-67-41-26.us-west-1.compute.amazonaws.com${endPoint}`)
     .then(({ data }) => {
       if (endPoint.includes('bundle')) {
         redisClient.setex(endPoint, 180, JSON.stringify(data));
