@@ -7,7 +7,7 @@ const cache = (response, endpoint) => {
       response.writeHead(200, { 'Content-Type': 'text/javascript' });
       response.end(JSON.parse(data));
     } else if (data !== null) {
-      response.statusCode = 200;
+      response.writeHead(200, { 'Content-Type': 'application/json' });
       response.end(data);
     } else if (endpoint.includes('bundle')) {
       fetchBundle(response, endpoint);
