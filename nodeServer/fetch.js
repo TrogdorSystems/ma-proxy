@@ -2,7 +2,7 @@ const axios = require('axios');
 const redisClient = require('./redisClient');
 
 const fetch = (response, endPoint) => axios
-  .get(`http://localhost:3005${endPoint}`)
+  .get(`http://ec2-54-67-41-26.us-west-1.compute.amazonaws.com${endPoint}`)
   .then(({ data }) => {
     const stringData = JSON.stringify(data);
     redisClient.setex(endPoint, 5, stringData);
