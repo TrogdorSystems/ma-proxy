@@ -7,7 +7,7 @@ const { servicePaths, serviceLists } = require('./bundlePaths/servicePaths');
 const bundles = [];
 
 const getBundle = service =>
-  axios.get(`${servicePaths[service]}/bundle-server.js`);
+  axios.get(`${servicePaths[service]}/${service}-bundle-server.js`);
 
 const writeBundle = service =>
   getBundle(service)
