@@ -26,7 +26,7 @@ const createAppBody = (about, reservation, menu, review) => `
 `;
 
 const createHydrated = (about, reservation, menu, review) => `
-  <script src='http://localhost:3009/bundle.js'></script>
+  <script src='http://ec2-18-144-47-201.us-west-1.compute.amazonaws.com/bundle.js'></script>
   <script>
 ReactDOM.hydrate(
   React.createElement(${menu}, { name: "quos999999"}),
