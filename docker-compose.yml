@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: busyreadingsomething/ss-proxy
+    ports:
+      - "3009:3009"
+    depends_on:
+      - redis
+  redis:
+    image: redis

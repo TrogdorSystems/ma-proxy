@@ -4,7 +4,7 @@ const serviceList = require('./getServerBundles');
 const { createBaseHtml, createAppBody, createHydrated } = require('./templates/base');
 
 const serveHtml = (response) => {
-  const component = React.createElement(serviceList[0], { name: 'eveniet10000000' });
+  const component = React.createElement(serviceList[0], { name: 'quos999999' });
   const componentString = ReactDOM.renderToString(component);
   response.statusCode = 200;
   // pass the strings through spread operator in the createAppBody
