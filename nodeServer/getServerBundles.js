@@ -7,7 +7,7 @@ const { servicePaths, serviceLists } = require('./bundlePaths/servicePaths');
 const bundles = [];
 
 const getBundle = service =>
-  axios.get(servicePaths[service]);
+  axios.get(`${servicePaths[service]}/bundle-server.js`);
 
 const writeBundle = service =>
   getBundle(service)
@@ -22,7 +22,8 @@ const writeBundle = service =>
     .catch(e => console.log(e));
 
 const getAndWriteAllBundles = () => {
-  const list = [writeBundle('menu')];
+  const list = [];
+  serviceLists.forEach(service => list.push(writeBundle(service)));
   console.log('GET AND WRITE');
   return Promise.all(list);
 };

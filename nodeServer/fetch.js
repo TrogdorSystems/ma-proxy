@@ -1,8 +1,11 @@
 const axios = require('axios');
 const redisClient = require('./redisClient');
+const { servicePaths } = require('./bundlePaths/servicePaths');
 
-const fetch = (response, endPoint) => axios
-  .get(`http://ec2-54-67-41-26.us-west-1.compute.amazonaws.com${endPoint}`)
+// http://ec2-54-67-41-26.us-west-1.compute.amazonaws.com
+
+const fetch = (response, endPoint, service) => axios
+  .get(`${servicePaths[service]}${endPoint}`)
   .then(({ data }) => {
     const stringData = JSON.stringify(data);
     redisClient.setex(endPoint, 5, stringData);
@@ -14,8 +17,8 @@ const fetch = (response, endPoint) => axios
     response.end();
   });
 
-const fetchBundle = (response, endPoint) =>
-  axios.get(`http://ec2-54-67-41-26.us-west-1.compute.amazonaws.com${endPoint}`)
+const fetchBundle = (response, endPoint, service) =>
+  axios.get(`${servicePaths[service]}${endPoint}`)
     .then(({ data }) => {
       if (endPoint.includes('bundle')) {
         redisClient.setex(endPoint, 180, JSON.stringify(data));
